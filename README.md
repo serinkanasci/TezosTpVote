@@ -23,6 +23,10 @@ ligo compile-storage src/voting.ligo main 'record votes = (map[] : map(address, 
 Retourne :
 (Pair (Pair (Pair "tz1TGu6TN5GSez2ndXXeDX6LgUDvLzPLqgYV" False) (Pair "" 0)) {})
 
+tezos-client originate contract votingContract transferring 10 from bootstrap1 running src/voting.tz --init '(Pair (Pair (Pair "tz1TGu6TN5GSez2ndXXeDX6LgUDvLzPLqgYV" False) (Pair "" 0)) {})' --burn-cap 4.178 &
+
+tezos-client bake for bootstrap1
+
 ligo compile-parameter src/voting.ligo main "Vote(record state=True; end)"
 Retourne :
 (Right True)
